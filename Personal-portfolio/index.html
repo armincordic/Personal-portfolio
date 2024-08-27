@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Armin Cordic</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/arminlogo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<div id="header">
+    <img src="images/arminbackground.jpg" alt="Armin Background" class="right-aligned-image hide-on-mobile">
+    <div class="container">
+        <nav>
+            <div class="left-nav">
+                <img src="images/arminlogo.png" class="logo">
+                <a href="#header" class="home-link">Armin Cordic</a>
+            </div>
+            <ul class="right-nav">
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i id="hamburger" class="fas fa-bars"></i>
+                <i id="close-menu" class="fas fa-times"></i>
+            </div>
+        </nav>
+        <div class="header-text">
+            <div id="typing-text"></div>
+            <div id="social-icons" class="hidden">
+                <a href="https://www.linkedin.com/in/armincordic" target="_blank">
+                    <img src="images/linkedin-icon.png" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/armincordic" target="_blank">
+                    <img src="images/instagram-icon.png" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://github.com/armincordic" target="_blank">
+                    <img src="images/github-icon.png" alt="GitHub" class="social-icon">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dynamic_background"></div>
+
+<div id="about-me" class="section">
+    <div class="about-me-section">
+        <h2><span id="about-me-title"></span></h2>
+        <img src="images/aboutmeslide.png" alt="About Me Image" class="about-me-image hide-on-mobile">
+        <div class="about-me-text">
+            <ul>
+                <li>Junior CS major at Webster University</li>
+                <li>Fluent English and Bosnian speaker</li>
+                <li>I have a passion for full stack development and am looking to utilize my skills in an internship.</li>
+                <li><strong>SKILLS</strong></li>
+                <li>Programming: Java, Python, JavaScript, HTML/CSS, SQL, Node.js, React.js, MATLAB, C++, C, Swift (iOS)</li>
+                <li>Tools: Android Studio, IntelliJ, PyCharm, Eclipse, AWS, Jupyter Notebooks, Git, Bootstrap, Spring Boot, Agile</li>
+                <li>Certifications: AWS Cloud Practitioner</li>
+                <li>Get in contact with me to learn more about my skill set!</li>
+            </ul>
+        </div>
+        <img src="images/profilepic.jpeg" alt="Profile Picture" class="profile-pic hide-on-mobile">
+    </div>
+</div>
+
+<div id="projects" class="section">
+    <div class="container">
+        <h2><span id="projects-title"></span></h2>
+        <div id="projects-content" class="projects-text"></div>
+    </div>
+</div>
+
+<div id="contact" class="compact-contact-section">
+    <div class="container">
+        <div class="contact-info">
+            <h2>CONTACT</h2>
+            <p>Email ➤ armin.cordic@outlook.com</p>
+            <p>Discord ➤ arminvk</p>
+        </div>
+        <div class="connect-info">
+            <h2>CONNECT</h2>
+            <a href="https://www.linkedin.com/in/armincordic" target="_blank">
+                <img src="images/linkedin-icon.png" alt="LinkedIn" class="social-icon">
+            </a>
+            <a href="https://www.instagram.com/armincordic" target="_blank">
+                <img src="images/instagram-icon.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://github.com/armincordic" target="_blank">
+                <img src="images/github-icon.png" alt="GitHub" class="social-icon">
+            </a>
+            <div class="footer">
+                <p>© 2024 Armin Cordic</p>
+            </div>
+        </div>
+        <div class="explore-links">
+            <h2>EXPLORE</h2>
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="DynamicBackground.js"></script>
+<script src="script.js"></script>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('section');
+    let currentSection = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 50) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    if (currentSection) {
+        switch (currentSection) {
+            case 'about-me':
+                document.title = 'About Me | Armin Cordic';
+                break;
+            case 'projects':
+                document.title = 'Projects | Armin Cordic';
+                break;
+            case 'contact':
+                document.title = 'Contact | Armin Cordic';
+                break;
+            default:
+                document.title = 'Home | Armin Cordic';
+        }
+    }
+});
+
+document.getElementById('hamburger').addEventListener('click', function() {
+    document.querySelector('nav ul').classList.add('show');
+    document.getElementById('hamburger').classList.add('hide');
+    document.getElementById('close-menu').classList.remove('hide');
+    document.getElementById('close-menu').classList.add('show');
+});
+
+document.getElementById('close-menu').addEventListener('click', function() {
+    document.querySelector('nav ul').classList.remove('show');
+    document.getElementById('hamburger').classList.remove('hide');
+    document.getElementById('hamburger').classList.add('show');
+    document.getElementById('close-menu').classList.remove('show');
+    document.getElementById('close-menu').classList.add('hide');
+});
+</script>
+</body>
+</html>
